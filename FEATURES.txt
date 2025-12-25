@@ -1,0 +1,43 @@
+Colbos — Features added
+
+Core
+- Authentication: Register and login endpoints; token-based auth (Authorization: Bearer <token>), `/api/me` endpoint.
+- Dashboard: Main application shell with a left sidebar and view switching (Boards, Repositories, Codespaces, Tasks, Whiteboard, Chat, Settings).
+
+Boards
+- Boards view: Simple board listing and board view (UI placeholder for Trello-like boards) with per-board detail pages.
+
+Repositories
+- Repositories CRUD (demo in-memory storage): list and create repositories via `/api/repos` and frontend `Repos` component.
+
+Codespaces & Editor
+- Codespaces management: create, list, start/stop demo codespaces via `/api/codespaces`.
+- Codespace Editor: file explorer, create/edit/delete files, download codespace as ZIP, and run JavaScript code in a sandboxed iframe (client-side run, `/api/run` to request server-side run stub).
+- File storage for codespaces is implemented in-memory for demo purposes (`/api/codespaces/:id/files`).
+
+Whiteboard
+- Drawing canvas with tools: pen, straight line, eraser (adjustable size) and fullscreen mode.
+- Save/load canvas image to server via `/api/whiteboards/:id`, and download as PNG.
+
+Chat
+- Room-based team chat: send and read messages via `/api/chats/:room` (in-memory storage).
+- Buttons in chat to send messages via server stubs for email (`/api/send-email`) and SMS (`/api/send-sms`) (logs only).
+
+Tasks
+- Local tasks management (client-side storage): add, list, filter by status, and auto-cancel old tasks (local storage key `colbos_tasks`).
+
+Settings & Profile
+- User settings stored in-memory: profile (name, email, mobile), notification preferences (email/SMS), and editor preferences via `/api/settings` endpoints.
+
+Developer & Utilities
+- Health endpoint: `/api/health`.
+- In-memory/demo implementations: many server features are demo stubs (codespaces, whiteboards, chats, repos, codespace files) intended for prototyping.
+- Frontend: Vite + React (components in `client/src/components`), CSS theming in `client/src/styles.css`.
+
+Notes & Next steps (suggestions)
+- Add persistent storage (Prisma models + migrations) for repos, codespaces, chats, whiteboards, and settings.
+- Add realtime collaboration (Socket.IO) for live whiteboard and chat updates.
+- Add server-side secure code execution via containers or sandboxes for multi-language run support.
+- Add user roles/permissions and input validation for production readiness.
+
+-- End of features list
